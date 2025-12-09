@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SDR Automatizado | Sua Solução B2B</title>
+  <style>
+    /* --- Reset e base --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f4c81, #1e90ff);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* --- Container principal --- */
+    .container {
+      max-width: 900px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, #ffffff, #a0d8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      text-align: center;
+      color: #e6f2ff;
+    }
+
+    /* --- SDR Automatizado --- */
+    .sdr-box {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sdr-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .sdr-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #1e90ff, #00bfff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 12px;
+    }
+
+    .sdr-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #ffffff;
+    }
+
+    .sdr-message {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: #f0f8ff;
+      min-height: 28px;
+    }
+
+    .typing-indicator {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background: #1e90ff;
+      border-radius: 50%;
+      margin-left: 4px;
+      opacity: 0;
+      animation: blink 1.4s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+
+    .message-text {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(5px);
+      animation: slideIn 0.6s forwards;
+    }
+
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* --- Botão CTA --- */
+    .cta-button {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      background: linear-gradient(to right, #00bfff, #1e90ff);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0, 191, 255, 0.4);
+    }
+
+    /* --- Responsivo --- */
+    @media (max-width: 600px) {
+      .container {
+        padding: 25px;
+      }
+      h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Automatize Seu SDR B2B</h1>
+    <p>Conecte-se com leads qualificados em segundos. Nosso assistente inteligente envia mensagens personalizadas 24/7 — como se fosse seu melhor vendedor.</p>
+
+    <div class="sdr-box">
+      <div class="sdr-header">
+        <div class="sdr-avatar">AI</div>
+        <div class="sdr-name">SDR Assistente</div>
+      </div>
+      <div class="sdr-message">
+        <span id="message-text" class="message-text"></span>
+        <span class="typing-indicator" id="typing-dot"></span>
+      </div>
+    </div>
+
+    <button class="cta-button" onclick="simulateDemo()">Ver Demonstração ao Vivo</button>
+  </div>
+
+  <script>
+    const messages = [
+      "Olá! Vi que sua empresa usa soluções SaaS para marketing.",
+      "Temos uma ferramenta por apenas $8.99/mês que aumenta o engajamento em até 70%.",
+      "Posso agendar uma demonstração rápida? Leva só 5 minutos!",
+      "Perfeito! Vou enviar o link por e-mail agora. 😊",
+      "🚀 Seu ROI começa hoje. Bem-vindo(a) ao futuro das vendas B2B!"
+    ];
+
+    let currentMessageIndex = 0;
+    let currentCharIndex = 0;
+    let isTyping = false;
+
+    const messageElement = document.getElementById('message-text');
+    const typingDot = document.getElementById('typing-dot');
+
+    function typeMessage() {
+      if (currentMessageIndex >= messages.length) {
+        typingDot.style.opacity = '0';
+        return;
+      }
+
+      const message = messages[currentMessageIndex];
+      isTyping = true;
+      typingDot.style.opacity = '1';
+
+      if (currentCharIndex < message.length) {
+        messageElement.textContent += message.charAt(currentCharIndex);
+        currentCharIndex++;
+        setTimeout(typeMessage, 30);
+      } else {
+        setTimeout(() => {
+          currentMessageIndex++;
+          currentCharIndex = 0;
+          messageElement.textContent = '';
+          typeMessage();
+        }, 2500);
+      }
+    }
+
+    function simulateDemo() {
+      // Reset
+      currentMessageIndex = 0;
+      currentCharIndex = 0;
+      messageElement.textContent = '';
+      typingDot.style.opacity = '0';
+
+      // Small delay to feel intentional
+      setTimeout(() => {
+        typeMessage();
+      }, 500);
+    }
+
+    // Inicia automaticamente após 1.5s (opcional)
+    setTimeout(simulateDemo, 1500);
+  </script>
+  <script src="https://santanamj.github.io/chatbot-widget/widget.js" data-company-id="2dee8b27-aa4b-4296-a85c-65ecdc447c12" data-api-token="rRzjLL0IDflizBCBh0EXF4kKhRuM-9J8-MUK5MSkVB5r30RyXPE8bDUfuyfXY3tb" data-api-base-url="http://localhost:5003/api/incoming-messages/chat-site" data-service="vendedor" data-display-mode="widget" data-layout-variant="default" async></script>
+</body>
+</html>
