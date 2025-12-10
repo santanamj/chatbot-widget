@@ -108,7 +108,7 @@ Error generating stack: `+l.message+`
   --chat-header-bg: #1a1a1a !important;
   --chat-message-user: #333333 !important;
   --chat-message-bot: #2a2a2a !important;
-  --chat-text: #ffffff !important;
+  --chat-text: #000 !important;
   --chat-text-light: #cccccc !important;
   --chat-border: #444444 !important;
 }
