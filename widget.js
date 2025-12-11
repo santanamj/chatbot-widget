@@ -296,6 +296,8 @@ Error generating stack: `+l.message+`
 
 .chat-widget-root .chat-container { background-color: #ffffff; border-radius: 0.75rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); }
 .chat-widget-root .message-bubble { border-radius: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08); color: #000000; }
+.chat-widget-root .message-bubble { padding: 0.5rem 0.75rem !important; display: inline-block; line-height: 1.25; }
+.chat-widget-root .message-bubble p { margin: 0; }
 .chat-widget-root .message-bubble.user { background-color: var(--chat-message-user, #2196f3); }
 .chat-widget-root .message-bubble.bot { background-color: var(--chat-message-bot, #ffffff); }
 
