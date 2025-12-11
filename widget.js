@@ -294,7 +294,7 @@ Error generating stack: `+l.message+`
 .chat-widget-root .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
 .chat-widget-root .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
 
-.chat-widget-root .chat-container { background-color: #ffffff; border-radius: 0.75rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); height: 600px; display: flex; flex-direction: column; }
+.chat-widget-root .chat-container { background-color: #ffffff; border-radius: 0.75rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); height: 400px; display: flex; flex-direction: column; }
 .chat-widget-root .message-bubble { border-radius: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08); color: #000000; }
 .chat-widget-root .message-bubble { padding: 0.375rem 0.625rem !important; display: inline-flex; align-items: center; line-height: 1.2; }
 .chat-widget-root .message-bubble p { margin: 0; }
