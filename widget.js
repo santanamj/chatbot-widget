@@ -190,7 +190,7 @@ Error generating stack: `+l.message+`
 .chat-widget-root .h-16 { height: 4rem; }
 .chat-widget-root .h-full { height: 100%; }
 .chat-widget-root .h-\\[520px\\] { height: 520px; }
-.chat-widget-root .h-\\[600px\\] { height: 600px; }
+.chat-widget-root .h-\\[400px\\] { height: 400px; }
 .chat-widget-root .h-\\[calc\\(100\\%-132px\\)\\] { height: calc(100% - 170px); }
 .chat-widget-root:not(.embedded-chat-root) .h-\\[calc\\(100\\%-132px\\)\\] { width: 340px !important; }
 .chat-widget-root .max-w-\\[80\\%\\] { max-width: 80%; }
